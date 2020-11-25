@@ -1,8 +1,42 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<header>
+    <a class="btn btn-primary" onclick="MakeReservation('@Url.Action("Reservation", "HomeController")')">Make reservation</a>
+</header>
+<body>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+</body>
+@section Scripts{
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.10.21/dataRender/datetime.js"></script>
+    <script src="~/js/datepickerchanged.js"></script>
+    <script>
+        var Popup;
+        function MakeReservation(url) {
+            var formDiv = $('<div\>');
+            $.get(url).done(function (response) {
+                formDiv.html(response);
+                Popup = formDiv.dialog({
+                    autoOpen: true,
+                    modal: true,
+                    draggable: true,
+                    position: { my: "center", at: "top", of: "window" },
+                    resizable: true,
+                    title: "Make reservation",
+                    height: 650,
+                    width: 900,
+                    close: function () {
+                        $(this).closest('.ui-dialog-content').dialog('destroy').remove();
+                    }
+                })
+            });
+        }
+    </script>
+}
