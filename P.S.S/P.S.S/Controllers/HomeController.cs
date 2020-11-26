@@ -15,12 +15,12 @@ namespace P.S.S.Controllers
         {
             return View();
         }
-        [HttpGet]
-        public IActionResult Reservation()
+        //[HttpGet]
+        public IActionResult Some()
         {
             return View();
         }
-        [HttpPost]
+       // [HttpPost]
         public async Task<IActionResult> Reservation(ReservationModel model)
         {
             return View();
