@@ -10,7 +10,7 @@ namespace P.S.S.Controllers
     public class AdminMainController : Controller
     {
         // GET: AdminMainController
-        public ActionResult Index()
+        public ActionResult IndexAdmin()
         {
             return View();
         }
