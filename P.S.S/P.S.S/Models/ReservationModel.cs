@@ -21,6 +21,7 @@ namespace P.S.S.Models
         [Required]
         public string Email { get; set; }
         [Required]
+        [MinLength(12), MaxLength(12)]
         public string TelNumber { get; set; }
         [Required]
         public string Gender { get; set; }

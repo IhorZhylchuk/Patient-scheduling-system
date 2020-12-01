@@ -2,10 +2,10 @@
     ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    <header>
-        <a class="btn btn-primary" onclick="MakeReservation('@Url.Action("Reservation", "HomeController")')">Make reservation</a>
-        <a class="btn btn-primary" asp-action="Index" asp-controller="AdminMainController">Reservation</a>
-    </header>
+<header>
+    <a class="btn btn-primary" onclick="MakeReservation('@Url.Action("Reservation", "Home")')">Make reservation</a>
+
+</header>
 <body>
 
 </body>
@@ -27,16 +27,36 @@
                     autoOpen: true,
                     modal: true,
                     draggable: true,
-                    position: { my: "center", at: "top", of: "window" },
-                    resizable: true,
+                    position: { my: "center", at: "top", of: window },
+                    resizable: false,
                     title: "Make reservation",
-                    height: 650,
+                    height: 600,
                     width: 900,
                     close: function () {
                         $(this).closest('.ui-dialog-content').dialog('destroy').remove();
                     }
                 })
             });
+        }
+        function SubmitForm(form) {
+            $.validator.unobtrusive.parse(form);
+            if ($(form).valid()) {
+                $.ajax({
+                    type: "POST",
+                    url: form.action,
+                    data: $(form).serialize(),
+                    success: function (data) {
+                        if (data.success) {
+                            $.notify("You successfully make reservation!", {
+                                globalPosition: 'top center',
+                                className: 'success',
+                                autoHide: true,
+                                autoHideDelay: 2000
+                            })
+                        }
+                    }
+                })
+            }
         }
     </script>
 }
