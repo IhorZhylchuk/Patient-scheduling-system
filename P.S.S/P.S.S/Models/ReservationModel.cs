@@ -17,6 +17,8 @@ namespace P.S.S.Models
         [Required]
         public DateTime Date { get; set; }
         [Required]
+        public string Time { get; set; }
+        [Required]
         public string Specialist { get; set; }
         [Required]
         public string Email { get; set; }

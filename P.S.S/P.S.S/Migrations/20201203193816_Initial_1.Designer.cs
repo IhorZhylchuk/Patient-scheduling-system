@@ -10,7 +10,7 @@ using P.S.S.Models;
 namespace P.S.S.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20201201181636_Initial_1")]
+    [Migration("20201203193816_Initial_1")]
     partial class Initial_1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -251,6 +251,10 @@ namespace P.S.S.Migrations
                         .IsRequired()
                         .HasMaxLength(12)
                         .HasColumnType("nvarchar(12)");
+
+                    b.Property<string>("Time")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

@@ -7,7 +7,7 @@ namespace P.S.S.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-
+            /*
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -56,6 +56,7 @@ namespace P.S.S.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Time = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Specialist = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TelNumber = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
@@ -210,6 +211,8 @@ namespace P.S.S.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+            */
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

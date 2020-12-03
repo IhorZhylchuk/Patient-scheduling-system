@@ -9,34 +9,43 @@
 <body>
 
 </body>
-@section Scripts{
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 
+@section Scripts{
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="~/js/datepickerchanged.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
     <script>
         var Popup;
+     
+
         function MakeReservation(url) {
-            var formDiv = $('<div\>');
-            $.get(url).done(function (response) {
-                formDiv.html(response);
-                Popup = formDiv.dialog({
-                    autoOpen: true,
-                    modal: true,
-                    draggable: true,
-                    position: { my: "center", at: "top", of: window },
-                    resizable: false,
-                    title: "Make reservation",
-                    height: 600,
-                    width: 900,
-                    close: function () {
-                        $(this).closest('.ui-dialog-content').dialog('destroy').remove();
-                    }
-                })
-            });
+            var formDiv = $('<div/>');
+            $.get(url)
+                .done(function (response) {
+                    formDiv.html(response);
+                    Popup = formDiv.dialog({
+                        autoOpen: true,
+                        modal: true,
+                        draggable: true,
+                        position: { my: "center", at: "top", of: window },
+                        resizable: false,
+                        title: 'Make reservation',
+                        height: 550,
+                        width: 900,
+                        close: function () {
+                            $(this).closest('.ui-dialog-content').dialog('destroy').remove();
+                        }
+                    });
+                });
         }
         function SubmitForm(form) {
             $.validator.unobtrusive.parse(form);
@@ -47,7 +56,7 @@
                     data: $(form).serialize(),
                     success: function (data) {
                         if (data.success) {
-                            $.notify("You successfully make reservation!", {
+                            $.notify(data.message, {
                                 globalPosition: 'top center',
                                 className: 'success',
                                 autoHide: true,
@@ -58,5 +67,6 @@
                 })
             }
         }
+
     </script>
 }

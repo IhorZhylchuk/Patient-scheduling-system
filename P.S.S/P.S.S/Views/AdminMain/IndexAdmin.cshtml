@@ -1,24 +1,18 @@
 ﻿@model ReservationModel;
 @{
     Layout = null;
-    List<string> doctors = new List<string>() { "Allergist/Immunologist", "Cardiologist", "Dermatologist",
-        "Endocrinologist", "Family Physician", "Gastroenterologist", "Internist", "Neurologist", "Ophthalmologist", "Physiatrist", "Pulmonologist" };
 }
 
-    <div class="form-group">
-        <label asp-for="Name">Name</label>
-        <input type="text" asp-for="Name" class="form-control" placeholder="Enter your name" />
-        <label asp-for="Surname">Surname</label>
-        <input type="text" asp-for="Surname" class="form-control" placeholder="Enter your surname" />
-    </div>
-    <div class="form-group">
-        <label asp-for="TelNumber">Tel. number</label>
-        <input asp-for="TelNumber" type="tel" class="form-control" placeholder="+48" />
-        <label asp-for="Email">Email</label>
-        <input asp-for="Email" type="email" placeholder="Enter your email" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Date">Date</label>
-        <input asp-for="Date" data-provide="datepicker" type="text" />
-    </div>
+<div class="md-form">
+    <input class="timepicker" data-provide="timepicker" type="text" />
+    <label for="input-limited-range">Time...</label>
+</div>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+@section Scripts{
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+}
+
+
 

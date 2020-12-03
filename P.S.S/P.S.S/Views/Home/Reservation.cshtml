@@ -1,6 +1,7 @@
 ﻿@model ReservationModel;
 @{
     Layout = null;
+    List<string> hours = ViewBag.Hours;
     List<string> gender = new List<string>() { "Man", "Woman" };
     List<string> doctors = new List<string>() { "Allergist/Immunologist", "Cardiologist", "Dermatologist",
         "Endocrinologist", "Family Physician", "Gastroenterologist", "Internist", "Neurologist", "Ophthalmologist", "Physiatrist", "Pulmonologist" };
@@ -24,6 +25,10 @@
     <div class="form-group">
         <label asp-for="Date">Date</label>
         <input asp-for="Date" data-provide="datepicker" type="text" />
+        <label asp-for="Time">Time</label>
+        <select asp-for="Time" asp-items="new SelectList(hours)">
+            
+        </select>
     </div>
     <div class="form-group">
         <label asp-for="Gender"></label>
@@ -41,3 +46,21 @@
         <input type="reset" value="Reset" class="btn" />
     </div>
 }
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+
+@section Scripts{
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('input.timepicker').timepicker({
+                minTime: '09:00',
+                maxTime: '05:00pm',
+                startTime: '09:00',
+                dynamic: false,
+                dropdown: true,
+                scrollbar: true
+            });
+        });
+    </script>
+}
+

@@ -66,6 +66,10 @@
             "Twitter.Bootstrap": {
               "target": "Package",
               "version": "[3.0.1.1, )"
+            },
+            "jQuery.UI.Combined": {
+              "target": "Package",
+              "version": "[1.12.1, )"
             }
           },
           "imports": [
