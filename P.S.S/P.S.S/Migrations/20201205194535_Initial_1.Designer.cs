@@ -10,7 +10,7 @@ using P.S.S.Models;
 namespace P.S.S.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20201203193816_Initial_1")]
+    [Migration("20201205194535_Initial_1")]
     partial class Initial_1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

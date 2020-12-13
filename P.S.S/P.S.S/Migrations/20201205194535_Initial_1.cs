@@ -7,7 +7,7 @@ namespace P.S.S.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            /*
+            
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -211,8 +211,7 @@ namespace P.S.S.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-            */
-
+            
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -17,6 +17,11 @@ namespace P.S.S.Controllers
         {
             dBContext = context;
         }
+        public JsonResult GetData()
+        {
+            var result = dBContext.Reservations.ToList();
+            return Json(result);
+        }
         public IActionResult Index()
         {
             
@@ -43,13 +48,14 @@ namespace P.S.S.Controllers
                 reservation.Specialist = model.Specialist;
                 reservation.Surname = model.Surname;
                 reservation.TelNumber = model.TelNumber;
+                reservation.Time = model.Time;
 
                 dBContext.Reservations.Add(reservation);
                 await dBContext.SaveChangesAsync();
-                //                return new JavaScriptResult("swal({text: 'You successfully made reservation!',icon: 'success',}); ");
-                return new JavaScriptResult("alert('Here is alert!') ");
+                return Json(new {success = true, message = "Added!"});
+                //return new JavaScriptResult("swal({text: 'Make sure that dates are correct!',icon: 'error',}); ");
             }
-            return View();
+            return RedirectToAction("Index");
         }
    
     }
