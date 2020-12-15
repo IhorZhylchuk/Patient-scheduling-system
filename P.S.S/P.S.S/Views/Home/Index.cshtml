@@ -21,19 +21,14 @@
     </table>
 
 </body>
-<link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" />
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet" />
 @section Scripts{
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.jqueryui.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="~/js/datepickerchanged.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
@@ -51,19 +46,22 @@
                 rowId: 'Id',
                 order: [[1, 'asc']],
                 columns: [
-                    { data: null, 'sortable': false },
+                    { data: null, 'sortable': false, 'className': 'dt-center' },
                     { data: 'date', 'className': 'dt-center', 'render': function (data) { return moment(data).format('D.M.YYYY') } },
                     { data: 'time', 'className': 'dt-center' },
                     { data: 'specialist', 'className': 'dt-center' },
                     {
                         data: 'id', 'className': 'dt-center', 'render': function (data) {
-                            return "<div style='width:100%; position: center'><div class='btn-group' role='group' id='groupButton'><a class='btn btn-secondary btn-small' onclick=DeleteMessage(" + data + ") id='Delete' style = 'height: 5 %, initial; margin-left: 2px '><i class='fa fa-trash' aria-hidden='true'></i> Delete</a ></div ></div >"
+                            return "<div style='width:100%; position: center'><div class='btn-group' role='group' id='groupButton'><a class='btn btn-danger btn-small' onclick=Delete(" + data + ") id='Delete' style = 'height: 5 %, initial; margin-left: 2px '><i class='fa fa-trash' aria-hidden='true'></i> Delete</a ></div></div >"
                         },
                         orderable: false,
                         searchable: false,
                         width: '150px'
                     }
-                ]
+                ],
+                language: {
+                    emptyTable: 'You have no reservations yet!'
+                }
             });
             $('#reservations').DataTable().on('order.dt search.dt', function () {
                 $('#reservations').DataTable().column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
@@ -113,6 +111,37 @@
                     }
                 });
             }
+        }
+        function Delete(id) {
+                Swal.fire({
+                title: 'Delete this reservation?',
+                text: "You won't be able to revert this!",
+                icon: 'question',
+                showCancelButton: true,
+                showConfirmButton: true,
+                cancelButtonText: 'Cancel',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+                        }).then((result) => {
+            if (result.isConfirmed) {
+                    $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("Delete", "Home")/' + id,
+                    success: function(data) {
+                        if (data.success) {
+                            $('#reservations').DataTable().ajax.reload(null, false);
+                            //setTimeout(function () { location.reload()}, 2000);
+                        }
+                    }
+                })
+                    Swal.fire(
+                        'Deleted!',
+                        'The item has been deleted.',
+                        'success'
+                    )
+                }
+                })
         }
 
     </script>

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using P.S.S.Models;
 
@@ -30,9 +31,9 @@ namespace P.S.S.Controllers
         [HttpGet]
         public IActionResult Reservation()
         {
-            List<string> hours = WorkingHours.GetHours();
-            ViewBag.Hours = hours;
+
             return View();
+            
         }
         [HttpPost]
         public async Task<IActionResult> Reservation(ReservationModel model)
@@ -56,6 +57,14 @@ namespace P.S.S.Controllers
                 //return new JavaScriptResult("swal({text: 'Make sure that dates are correct!',icon: 'error',}); ");
             }
             return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var reservation = await dBContext.Reservations.Where(i => i.Id == id).FirstOrDefaultAsync();
+            dBContext.Reservations.Remove(reservation);
+            await dBContext.SaveChangesAsync();
+            return Json(new { success = true, message = "Deleted successfully" });
         }
    
     }
