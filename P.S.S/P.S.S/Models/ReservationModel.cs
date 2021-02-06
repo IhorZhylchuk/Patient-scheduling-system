@@ -9,9 +9,9 @@ namespace P.S.S.Models
     public class ReservationModel
     {
         public int Id { get; set; }
-        [Required]
+        //[Required]
         public string Name { get; set; }
-        [Required]
+        //[Required]
         public string Surname { get; set; }
         [DataType(DataType.Date)]
         [Required]
@@ -27,7 +27,7 @@ namespace P.S.S.Models
         public string TelNumber { get; set; }
         [Required]
         public string Gender { get; set; }
-        
+        //public int YourSelf { get; set; }
 
     }
 }

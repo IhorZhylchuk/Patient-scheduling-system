@@ -63,6 +63,10 @@
               "target": "Package",
               "version": "[5.0.0, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
             "Twitter.Bootstrap": {
               "target": "Package",
               "version": "[3.0.1.1, )"
@@ -70,6 +74,10 @@
             "jQuery.UI.Combined": {
               "target": "Package",
               "version": "[1.12.1, )"
+            },
+            "jQuery.Validation": {
+              "target": "Package",
+              "version": "[1.19.2, )"
             }
           },
           "imports": [

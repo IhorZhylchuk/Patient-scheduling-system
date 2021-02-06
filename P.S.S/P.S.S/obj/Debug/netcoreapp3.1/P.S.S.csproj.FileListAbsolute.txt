@@ -81,5 +81,7 @@ C:\Users\Mr Z\Documents\GitHub\Patient-scheduling-system\P.S.S\P.S.S\bin\Debug\n
 C:\Users\Mr Z\Documents\GitHub\Patient-scheduling-system\P.S.S\P.S.S\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
 C:\Users\Mr Z\Documents\GitHub\Patient-scheduling-system\P.S.S\P.S.S\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\Mr Z\Documents\GitHub\Patient-scheduling-system\P.S.S\P.S.S\obj\Debug\netcoreapp3.1\P.S.S.csprojAssemblyReference.cache
+C:\Users\Mr Z\Documents\GitHub\Patient-scheduling-system\P.S.S\P.S.S\obj\Debug\netcoreapp3.1\Razor\Views\Home\Error.cshtml.g.cs
 C:\Users\Mr Z\Documents\GitHub\Patient-scheduling-system\P.S.S\P.S.S\obj\Debug\netcoreapp3.1\P.S.S.csproj.CoreCompileInputs.cache
 C:\Users\Mr Z\Documents\GitHub\Patient-scheduling-system\P.S.S\P.S.S\obj\Debug\netcoreapp3.1\P.S.S.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Mr Z\Documents\GitHub\Patient-scheduling-system\P.S.S\P.S.S\obj\Debug\netcoreapp3.1\Razor\Views\Home\Reservation_2.cshtml.g.cs
